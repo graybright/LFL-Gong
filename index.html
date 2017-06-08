@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="robots" content="noindex">
+	<meta charset="utf-8">
+	
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <title>HIT THAT GONG!!!</title>
+    
+</head>
+<body>
+
+
+<div style="text-align:center;">
+<input type="image" src="https://images-na.ssl-images-amazon.com/images/I/41b25T3JytL._SY450_.jpg" alt="Submit" class="bg" onclick="switchLED(1,1)">
+
+
+    <script type="text/javascript">
+      var deviceID    = "1b0049000d51353532343635";
+      var accessToken = "91f68364396f0217f77ef56e7fdbd62cc75d6284";
+      var setFunc = "led";
+
+      // OMG WE'RE MID SCRIPT RIGHT NOW, THIS IS WAYYY CRAZY
+
+      function switchLED(ledn,newValue) {
+        var paramStr = "l" + ledn.toString();
+        if (newValue==1) { 
+           paramStr = paramStr + ",HIGH";
+        } else {
+          paramStr = paramStr + ",LOW";
+        }
+	var requestURL = "https://api.spark.io/v1/devices/" + deviceID + "/" + setFunc + "/";
+        $.post( requestURL, { params: paramStr, access_token: accessToken });
+
+      }
+    </script>
+
+</div>
+
+
+
+</body>
+</html>
